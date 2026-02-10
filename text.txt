@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bin There, Done That</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f2f2f2;
+}
+
+header {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+nav {
+    background: #1b5e20;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.bundle {
+    background: #c8e6c9;
+}
+
+button {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.review {
+    background: #fffde7;
+}
+
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Bin There, Done That</h1>
+<p>Lawn Care & Trash Bin Cleaning</p>
+</header>
+
+<nav>
+<a href="#services">Services</a>
+<a href="#calculator">Price Calculator</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#booking">Book Service</a>
+</nav>
+
+<section id="services">
+<h2>Services</h2>
+
+<div class="card">
+<h3>🌱 Lawn Mowing — $25+</h3>
+</div>
+
+<div class="card">
+<h3>✂️ Lawn Edging — $15+</h3>
+</div>
+
+<div class="card">
+<h3>🧼 Trash Bin Cleaning — $20 per bin</h3>
+</div>
+
+<div class="card bundle">
+<h3>💥 Bundle Deal — $50</h3>
+<p>Mowing + Edging + Bin Cleaning</p>
+</div>
+
+</section>
+
+<section id="calculator">
+<h2>💰 Price Calculator</h2>
+
+<label><input type="checkbox" id="mowing"> Lawn Mowing ($25)</label><br>
+<label><input type="checkbox" id="edging"> Lawn Edging ($15)</label><br>
+<label><input type="checkbox" id="bins"> Trash Bin Cleaning ($20)</label><br><br>
+
+<button onclick="calculate()">Calculate Price</button>
+
+<h3 id="total"></h3>
+</section>
+
+<section id="gallery">
+<h2>📸 Before & After</h2>
+
+<div class="gallery">
+<img src="https://via.placeholder.com/300x200?text=Before+Yard">
+<img src="https://via.placeholder.com/300x200?text=After+Yard">
+<img src="https://via.placeholder.com/300x200?text=Clean+Trash+Bin">
+</div>
+
+<p>You can replace these with your own photos later.</p>
+</section>
+
+<section id="reviews">
+<h2>⭐ Customer Reviews</h2>
+
+<div class="card review">
+<p>"Great job cleaning my yard and bins!"</p>
+<p>— Happy Customer</p>
+</div>
+
+<div class="card review">
+<p>"Very professional and affordable."</p>
+<p>— Local Neighbor</p>
+</div>
+
+</section>
+
+<section id="booking">
+<h2>📅 Book A Service</h2>
+
+<form onsubmit="submitForm(event)">
+<input type="text" placeholder="Your Name" required><br><br>
+<input type="text" placeholder="Address" required><br><br>
+<input type="tel" placeholder="Phone Number" required><br><br>
+
+<select required>
+<option value="">Select Service</option>
+<option>Lawn Mowing</option>
+<option>Lawn Edging</option>
+<option>Trash Bin Cleaning</option>
+<option>Bundle</option>
+</select><br><br>
+
+<button type="submit">Request Service</button>
+</form>
+
+<p id="formMessage"></p>
+
+</section>
+
+<footer>
+<p>© 2026 Bin There, Done That</p>
+</footer>
+
+<script>
+function calculate() {
+    let total = 0;
+
+    if (document.getElementById("mowing").checked) total += 25;
+    if (document.getElementById("edging").checked) total += 15;
+    if (document.getElementById("bins").checked) total += 20;
+
+    if (total === 60) total = 50; // bundle discount
+
+    document.getElementById("total").innerText = "Estimated Price: $" + total;
+}
+
+function submitForm(event) {
+    event.preventDefault();
+    document.getElementById("formMessage").innerText =
+        "Request sent! You will contact the customer manually.";
+}
+</script>
+
+</body>
+</html>
